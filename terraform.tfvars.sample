@@ -1,2 +1,13 @@
+// These are the parameters that you MUST fill out.  See vars.tf for other
+// tunables.
+
+// This is the GCP Project that VMs should be launched in to.
 project = "<your project>"
+
+// This token is used to establish trust between nodes in the cluster.  You can
+// generate it with the following snippet:
+//
+//   python -c 'import random; print "%0x.%0x" % (random.SystemRandom().getrandbits(3*8), random.SystemRandom().getrandbits(8*8))'
+//
+// The token has to be in the form of '<6 chars>.<16 chars>'
 bootstrap_token = "<your token>" # See README.md

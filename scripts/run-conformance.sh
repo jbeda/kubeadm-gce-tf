@@ -14,6 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This is a helper script that can be run on the master to run Kubernetes
+# conformance tests.  It is very slow.
+
 set -x
 set -o errexit
 set -o nounset
