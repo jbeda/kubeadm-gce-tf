@@ -13,8 +13,7 @@ This is a proof of concept (not supported for production deployments) that uses 
 1. Configure a service account for terraform to use.
 
   ```bash
-  gcloud iam service-accounts create k8s-terraform  
-  SA_EMAIL=$(gcloud iam service-accounts list --filter="email:k8s-terraform@*" --format='value(email)')
+  SA_EMAIL=$(gcloud iam service-accounts --format='value(email)' create k8s-terraform)
   gcloud iam service-accounts keys create account.json --iam-account=$SA_EMAIL
   ```
 
