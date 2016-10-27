@@ -45,7 +45,7 @@ The API server will be running an unsecured endpoint on port 8080 on the master 
 You can easily just ssh in to the cluster and run `kubectl` there.  That is probably easiest.
 
 ```
-workstation$ gcloud ssh --zone=us-west1-a kube-master
+workstation$ gcloud compute ssh --zone=us-west1-a kube-master
 kube-master$ kubectl get nodes
 NAME          STATUS    AGE
 kube-master   Ready     1h
