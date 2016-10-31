@@ -15,6 +15,8 @@ This is a proof of concept (not supported for production deployments) that uses 
   ```bash
   SA_EMAIL=$(gcloud iam service-accounts --format='value(email)' create k8s-terraform)
   gcloud iam service-accounts keys create account.json --iam-account=$SA_EMAIL
+  PROJECT=$(gcloud config list core/project --format='value(core.project)')
+  gcloud projects add-iam-policy-binding $PROJECT --member serviceAccount:$SA_EMAIL --role roles/editor
   ```
 
 1. Configure terraform modules
