@@ -17,6 +17,12 @@ This is a proof of concept (not supported for production deployments) that uses 
   gcloud iam service-accounts keys create account.json --iam-account=$SA_EMAIL
   ```
 
+1. Configure terraform modules
+
+  ```bash
+  terraform get
+  ```
+
 1. Configure terraform variables
   * Start with the provided template:
 
