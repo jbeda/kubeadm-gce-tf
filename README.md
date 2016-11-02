@@ -68,7 +68,7 @@ You can easily create an SSH tunnel to that machine and use your local kubectl. 
 
 ```bash
 # Launch the SSH tunnel in the background
-gce ssh --zone=us-west1-a kube-master -- -L 8080:127.0.0.1:8080 -N &
+gcloud compute ssh --zone=us-west1-a kube-master -- -L 8080:127.0.0.1:8080 -N &
 
 # Set up and activate a "localhost" context for kubectl
 kubectl config set-cluster localhost --server=127.0.0.1:8080 --insecure-skip-tls-verify
