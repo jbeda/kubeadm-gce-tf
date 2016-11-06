@@ -19,7 +19,7 @@
 // node.
 data "template_file" "prereq-node" {
   count    = "${var.num-nodes}"
-  template = "${file("scripts/prereq.sh")}"
+  template = "${file("tf-scripts/prereq.sh")}"
 
   vars {
     bridge-cidr = "${element(module.subnets.node_container_cidrs, count.index)}"
@@ -30,7 +30,7 @@ data "template_file" "prereq-node" {
 // This script will have the node join the master.  It verifies itself with the
 // token.
 data "template_file" "node" {
-  template = "${file("scripts/node.sh")}"
+  template = "${file("tf-scripts/node.sh")}"
 
   vars {
     token     = "${var.bootstrap_token}"

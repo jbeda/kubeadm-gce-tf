@@ -66,7 +66,7 @@ resource "google_compute_firewall" "firewall-ssh" {
 // needs to know the overall CIDR so it can make sure that traffic not on that
 // network gets NATd as it exits GCE.
 data "template_file" "iptables" {
-  template = "${file("scripts/set-iptables.sh")}"
+  template = "${file("tf-scripts/set-iptables.sh")}"
 
   vars {
     cidr = "${var.cidr}"

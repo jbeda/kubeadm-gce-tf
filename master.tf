@@ -18,7 +18,7 @@
 // This script will install docker, the kubelet and configure networking on the
 // node.
 data "template_file" "prereq-master" {
-  template = "${file("scripts/prereq.sh")}"
+  template = "${file("tf-scripts/prereq.sh")}"
 
   vars {
     bridge-cidr = "${module.subnets.master_container_cidr}"
@@ -28,7 +28,7 @@ data "template_file" "prereq-master" {
 
 // This script will install Kubernetes on the master.
 data "template_file" "master" {
-  template = "${file("scripts/master.sh")}"
+  template = "${file("tf-scripts/master.sh")}"
 
   vars {
     token        = "${var.bootstrap_token}"
