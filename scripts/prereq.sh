@@ -18,6 +18,14 @@
 curl -sSL https://get.docker.com/ | sh
 systemctl start docker
 
+# This sets up the DNS endpoint in the container.  This has to be coordinated
+# with the service IP range set on the master.
+mkdir -p /etc/systemd/system/kubelet.service.d
+cat >/etc/systemd/system/kubelet.service.d/20-gcenet.conf <<EOF
+[Service]
+Environment="KUBELET_DNS_ARGS=--cluster-dns=${dns-ip} --cluster-domain=cluster.local"
+EOF
+
 # Install kubernetes apt source and the packages we'll need
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF > /etc/apt/sources.list.d/kubernetes.list
@@ -60,11 +68,4 @@ cat >/etc/cni/net.d/99-loopback.conf <<EOF
     "name": "cni-loopback",
     "type": "loopback"
 }
-EOF
-
-# This sets up the DNS endpoint in the container.  This has to be coordinated
-# with the service IP range set on the master.
-cat >/etc/systemd/system/kubelet.service.d/20-gcenet.conf <<EOF
-[Service]
-Environment="KUBELET_DNS_ARGS=--cluster-dns=${dns-ip} --cluster-domain=cluster.local"
 EOF
